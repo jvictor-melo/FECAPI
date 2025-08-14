@@ -1,0 +1,22 @@
+{
+  "name": "projeto-fecapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontend\" \"npm run electron\"",
+    "frontend": "cd frontend && npm run dev",
+    "backend": "cd backend && npm start",
+    "electron": "wait-on http://localhost:3000 && electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "electron": "^37.2.6",
+    "wait-on": "^8.0.4"
+  }
+}

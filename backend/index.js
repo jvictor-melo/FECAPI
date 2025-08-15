@@ -5,6 +5,7 @@ import cors from "cors";
 import competidoresRoutes from './routes/competidores.js';
 import categoriaRoutes from './routes/categoria.js';
 import notasRoutes from './routes/notas.js';
+import autenticarRoutes from './routes/autenticar.js';
 
 //porta do servidor
 const PORT = 3030;
@@ -18,6 +19,7 @@ api.use(cors());
 api.use('/competidores', competidoresRoutes);
 api.use('/categoria', categoriaRoutes);
 api.use('/notas', notasRoutes);
+api.use('/autenticar', autenticarRoutes);
 
 api.listen(PORT, () => {
     console.log(`Servidor escutando em http://localhost:${PORT}`)

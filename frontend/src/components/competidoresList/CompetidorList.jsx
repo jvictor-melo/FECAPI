@@ -1,15 +1,36 @@
-// src/components/CompetidorList.jsx
 import React from "react";
 
-export default function CompetidorList({ competidores, onDelete }) {
+export default function CompetidorList({ competidores, categorias, onDelete }) {
+  const getCategoriaNome = (id) => {
+    const categoria = categorias.find(c => c.id === id);
+    return categoria ? categoria.nome : 'N/A';
+  };
+
   return (
-    <ul>
-      {competidores.map((comp) => (
-        <li key={comp.id_competidores}>
-          {comp.nome} - {comp.idade} anos (Categoria: {comp.id_categoria}, Notas: {comp.id_notas})
-          <button onClick={() => onDelete(comp.id_competidores)}>Excluir</button>
-        </li>
-      ))}
-    </ul>
+    <table className="competidores-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Categoria</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {competidores.map(competidor => (
+          <tr key={competidor.id}>
+            <td>{competidor.nome}</td>
+            <td>{getCategoriaNome(competidor.id_categoria)}</td>
+            <td>
+              <button 
+                onClick={() => onDelete(competidor.id)}
+                className="delete-button"
+              >
+                Excluir
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }

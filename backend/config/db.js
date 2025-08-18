@@ -43,11 +43,17 @@ db.serialize(() => {
     nota_2 FLOAT(20) NOT NULL,
     nota_3 FLOAT NOT NULL
   )`);
-
+  
+  db.run(`CREATE TABLE IF NOT EXISTS usuarios (
+    id_usuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+    usuario VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL
+  )`);
+  
   db.run(`CREATE TABLE IF NOT EXISTS competidores (
-    id_competidores INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    id_competidores INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
     nome VARCHAR(255) NOT NULL,
-    id_categoria INTEGER NOT NULL,
+    id_categoria INTEGER,
     FOREIGN KEY(id_categoria) REFERENCES categoria(id_categoria)
   )`);
 });

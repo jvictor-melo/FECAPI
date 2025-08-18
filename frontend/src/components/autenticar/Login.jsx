@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../services/autenticarServices';
+import { login } from '../../services/AutenticarServices';
 
 function Login({ setIsLoggedIn }) {
     const [usuario, setUsuario] = useState('');

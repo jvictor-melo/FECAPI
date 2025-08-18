@@ -1,18 +1,15 @@
-import './App.css'
-import { useState } from 'react'
-import LayoutHome from './layouts/homeLayout/LayoutHome.jsx'
-import Home from './pages/home/Home.jsx'
-import Autenticacao from './pages/auth/autenticacao.jsx'
+import { BrowserRouter as Router } from 'react-router-dom';
+import Autenticacao from './pages/auth/Autenticacao';
+import { useState } from 'react';
 
 function App() {
-  const [isLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    
-    <>
-      {isLoggedIn ? <Home /> : <Autenticacao />}
-    </>
-  )
+    <Router>
+      <Autenticacao isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+    </Router>
+  );
 }
 
-export default App
+export default App;

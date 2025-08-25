@@ -1,5 +1,6 @@
 // src/components/CategoriaForm.jsx
 import React, { useState } from "react";
+import "./styles.css";
 
 export default function CategoriaForm({ onSubmit }) {
   const [nome, setNome] = useState("");

@@ -1,49 +1,58 @@
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import Login from "../../components/autenticar/login";
-import Register from "../../components/autenticar/register";
-import Home from "../home/Home";
-import { useEffect } from "react";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Login from '../../components/autenticar/Login';
+import Register from '../../components/autenticar/Register';
+//import './Autenticacao.css';
 
+/*
+ * COMPONENTE Autenticacao - Gerenciador de Fluxo de Autenticação
+ * 
+ * Este componente gerencia sub-rotas dentro de /login/*
+ * 
+ * Sub-rotas suportadas:
+ * - /login/ → Login (rota padrão)
+ * - /login/register → Registro
+ * - /login/forgot-password → Recuperar senha (se implementado)
+ */
 function Autenticacao({ isLoggedIn, setIsLoggedIn }) {
-  const navigate = useNavigate();
-
-  // Redireciona se já estiver logado
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/home');
-    }
-  }, [isLoggedIn, navigate]);
+  
+  // Se já estiver logado, redireciona para home
+  if (isLoggedIn) {
+    return <Navigate to="/home" replace />;
+  }
 
   return (
-    <Routes>
-      <Route path="/login/" element={
-        isLoggedIn ? (
-          <Navigate to="/home/" replace />
-        ) : (
-          <Login setIsLoggedIn={setIsLoggedIn} />
-        )
-      } />
-      
-      <Route path="/register/" element={
-        isLoggedIn ? (
-          <Navigate to="/home/" replace />
-        ) : (
-          <Register />
-        )
-      } />
-      
-      <Route path="/home/" element={
-        isLoggedIn ? (
-          <Home />
-        ) : (
-          <Navigate to="/login/" replace state={{ from: '/home' }} />
-        )
-      } />
-      
-      <Route path="/" element={
-        <Navigate to={isLoggedIn ? '/home/' : '/login/'} replace />
-      } />
-    </Routes>
+    <div className="auth-container">
+      {/*
+        ✅ AGORA FUNCIONA: A rota pai /login/* permite estas rotas filhas
+        As URLs serão:
+        - /login/ → mostra Login (path vazio)
+        - /login/register → mostra Register
+      */}
+      <Routes>
+        
+        {/* Sub-rota: /login/ (vazia) → Formulário de Login */}
+        <Route 
+          path="" 
+          element={<Login setIsLoggedIn={setIsLoggedIn} />} 
+        />
+        
+        {/* Sub-rota: /login/register → Formulário de Registro */}
+        <Route 
+          path="register" 
+          element={<Register setIsLoggedIn={setIsLoggedIn} />} 
+        />
+        
+        {/*
+          Sub-rota padrão: redireciona para login se tentar acessar
+          /login/qualquer-outra-coisa
+        */}
+        <Route 
+          path="*" 
+          element={<Navigate to="/login" replace />} 
+        />
+        
+      </Routes>
+    </div>
   );
 }
 

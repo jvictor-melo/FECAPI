@@ -7,27 +7,40 @@ import Inicio from "../../layouts/inicio/Inicio";
 import Relatorio from "../../layouts/relatorio/Relatorio";
 import Menu from "../../components/menu/Menu";
 
-
-
-function Home () {
+function Home() {
     return (
-        <>
-            <main className="container-main">
-
-                    <Menu />
-                    <div id='container-dinamico'>
-                        <Routes>
-                            <Route path="/" element={<Inicio />} />
-                            <Route path="/competidores" element={<Competidores />} />
-                            <Route path="/categoria" element={<Categoria />} />
-                            <Route path="/campeonato" element={<Campeonato />} />
-                            <Route path="/relatorios" element={<Relatorio />} />
-                        </Routes>
-                    </div>
-                
-            </main>
-        </>
+        <main className="container-main">
+            <Menu />
+            <div id='container-dinamico'>
+                {/*
+                  ✅✅✅ IMPORTANTE: Usar rotas RELATIVAS
+                  Como a rota pai é "/home/*", aqui usamos paths relativos:
+                  
+                  URL completa → Componente
+                  /home/ → Inicio
+                  /home/competidores → Competidores  
+                  /home/categoria → Categoria
+                  /home/campeonato → Campeonato
+                  /home/relatorios → Relatorio
+                */}
+                <Routes>
+                    <Route path="/" element={<Inicio />} />
+                    <Route path="/competidores" element={<Competidores />} />
+                    <Route path="/categoria" element={<Categoria />} />
+                    <Route path="/campeonato" element={<Campeonato />} />
+                    <Route path="/relatorios" element={<Relatorio />} />
+                    
+                    {/* Rota para páginas não encontradas DENTRO do home */}
+                    <Route path="*" element={
+                        <div style={{ padding: '20px' }}>
+                            <h3>Página não encontrada</h3>
+                            <p>A seção solicitada não existe.</p>
+                        </div>
+                    }/>
+                </Routes>
+            </div>
+        </main>
     )
-};
+}
 
 export default Home;

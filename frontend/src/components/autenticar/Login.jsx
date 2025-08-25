@@ -46,7 +46,7 @@ function Login({ setIsLoggedIn }) {
             </form>
 
     
-            <button onClick={() => navigate('/register')}>Criar conta</button>
+            <button onClick={() => navigate('register')}>Criar conta</button>
         </div>
     );
 }

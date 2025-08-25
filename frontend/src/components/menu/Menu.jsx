@@ -5,11 +5,11 @@ import "./styles.css";
 function Menu () {
     const infoMenu = [
         {id: 1, paginas: "/", h2: "Home"},
-        {id: 2, paginas: "/competidores", h2: "Competidores"},
-        {id: 2, paginas: "/categoria", h2: "Categoria"},
-        {id: 3, paginas: "/campeonato", h2: "Campeonato"},
-        {id: 4, paginas: "/relatorios", h2: "Relatorios"},
-        {id: 5, paginas: "/sair", h2: "Sair"}
+        {id: 2, paginas: "/home/competidores", h2: "Competidores"},
+        {id: 2, paginas: "/home/categoria", h2: "Categoria"},
+        {id: 3, paginas: "/home/campeonato", h2: "Campeonato"},
+        {id: 4, paginas: "/home/relatorios", h2: "Relatorios"},
+        {id: 5, paginas: "/home/sair", h2: "Sair"}
     ];
 
 

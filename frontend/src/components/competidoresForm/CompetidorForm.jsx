@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import "./styles.css";
-=======
 import React, { useState, useEffect } from "react";
->>>>>>> d172b4ab680fb3d274027878cc5d4306ee99897c
+import "./styles.css";
 
 export default function CompetidorForm({ onSubmit, categorias, competidorEditando, onCancel }) {
   const [nome, setNome] = useState("");

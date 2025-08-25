@@ -1,12 +1,29 @@
-
-
 // src/services/categoriaService.js
 const API_URL = "http://localhost:3030/competidores";
 
+// vou da uma organizada aq
+
 export async function getCompetidores() {
+  try {
     const res = await fetch(API_URL);
-    return res.json();
+    if (!res.ok) throw new Error('erro ao buscar competidores');
+    return await res.json();
+  } catch (error) {
+    console.error("erro no getCompetidores:", error);
+  }
 }
+
+export async function getCompetidorById(id) {
+    try {
+        const res = await fetch(`${API_URL}/${id}`);
+        if (!res.ok) throw new Error('erro ao buscar competidor por id');
+        return await res.json();
+    } catch (error) {
+        console.error("erro no getCompetidorById:", error);
+        throw error;
+    }
+}
+
 /*
 export async function createCompetidor(data) {
     const res = await fetch(API_URL, {
@@ -21,7 +38,7 @@ export async function createCompetidor(competidorData) {
   try {
     console.log('Enviando dados para o servidor:', competidorData);
     
-    const response = await fetch('http://localhost:3030/competidores', {
+    const response = await fetch(`${API_URL}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,16 +63,44 @@ export async function createCompetidor(competidorData) {
     throw error;
   }
 }
-
+ // coloquei so um try e catch aq
 export async function updateCompetidor(id, data) {
+  try{
     const res = await fetch(`${API_URL}/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
     });
-    return res.json();
+    if (!res.ok) throw new Error('erro atualizar competidor');
+      return await res.json();
+    } catch (error) {
+      console.error("erro no updateCompetidor:", error);
+      throw error;
+    }
+}
+// mesma coisa q fiz em cima
+export async function deleteCompetidor(id) {
+    try {
+        const res = await fetch(`${API_URL}/${id}`, { 
+            method: "DELETE" 
+        });
+        if (!res.ok) throw new Error('erro ao deletar competidor');
+        return await res.json();
+    } catch (error) {
+        console.error("erro no deleteCompetidor:", error);
+        throw error;
+    }
 }
 
-export async function deleteCompetidor(id) {
-    await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+// validar a categoria pae chama
+export async function validarCategoria(id_categoria) {
+    try {
+        const response = await fetch(`${API_URL}/${id_categoria}`);
+        if (!response.ok) return false;
+        const categoria = await response.json();
+        return categoria !== null;
+    } catch (error) {
+        console.error('erro ao validar categoria:', error);
+        return false;
+    }
 }

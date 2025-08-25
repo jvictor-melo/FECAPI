@@ -1,9 +1,27 @@
 import db from '../config/db.js';
 
+//! lembrar de fazer os erros
+
 export const getAll = (req, res) => {
   db.all('SELECT * FROM categoria', [], (err, rows) => {
     if (err) return res.status(500).json(err);
     res.json(rows);
+  });
+};
+
+// getid
+export const getById = (req, res) => {
+  const { id } = req.params;
+  
+  db.get('SELECT * FROM categoria WHERE id_categoria = ?', [id], (err, row) => {
+    if (err) {
+      console.error("erro ao buscar categoria:", err);
+      return res.status(500).json({ error: 'erro do servidor' });
+    }
+    if (!row) {
+      return res.status(404).json({ error: 'categoria nao encontadra' });
+    }
+    res.json(row);
   });
 };
 

@@ -1,10 +1,24 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import "./styles.css";
+=======
+import React, { useState, useEffect } from "react";
+>>>>>>> d172b4ab680fb3d274027878cc5d4306ee99897c
 
-export default function CompetidorForm({ onSubmit, categorias }) {
+export default function CompetidorForm({ onSubmit, categorias, competidorEditando, onCancel }) {
   const [nome, setNome] = useState("");
   const [id_categoria, setIdCategoria] = useState(categorias[0]?.id || "");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if(competidorEditando) {
+      setNome(competidorEditando.nome || "");
+      setIdCategoria(competidorEditando.id_categoria || "");
+    } else {
+      setNome("");
+      setIdCategoria(categorias[0]?.id_categoria || "");
+    }
+  }, [competidorEditando, categorias])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,8 +57,9 @@ export default function CompetidorForm({ onSubmit, categorias }) {
           onChange={(e) => setIdCategoria(e.target.value)}
           required
         >
+          <option value="">Selecione uma categoria</option>
           {categorias.map(categoria => (
-            <option key={categoria.id} value={categoria.id}>
+            <option key={categoria.id_categoria} value={categoria.id_categoria}>
               {categoria.nome}
             </option>
           ))}
@@ -53,9 +68,22 @@ export default function CompetidorForm({ onSubmit, categorias }) {
 
       {error && <div className="error-message">{error}</div>}
 
-      <button type="submit" className="submit-button">
-        Salvar
-      </button>
+      <div className="form-buttons">
+        <button type="submit" className="submit-button">
+          {competidorEditando ? 'Atualizar' : 'Salvar'}
+        </button>
+        
+        {competidorEditando && (
+          <button 
+            type="button" 
+            onClick={onCancel}
+            className="cancel-button"
+          >
+            Cancelar
+          </button>
+        )}
+      </div>
     </form>
   );
 }
+// testar se ficou melhor com o botao de cancelar

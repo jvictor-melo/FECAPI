@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../services/AutenticarServices';
+import './styles.css';
 
 function Login({ setIsLoggedIn }) {
     const [usuario, setUsuario] = useState('');
@@ -15,38 +16,55 @@ function Login({ setIsLoggedIn }) {
         try {
             await login(usuario, senha);
             setIsLoggedIn(true)
-            navigate('/home') // PROCURAR TELA INICIAL, n sei qual é
+            navigate('/home')
         } catch (err) {
-            setError(err.response?.data?.error || 'Usuario ou senha incorretos');
+            setError(err.response?.data?.error || 'Usuário ou senha incorretos');
         }
     };
 
     return (
-        <div>
-            <h1>Login</h1>
-            
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div className="auth-container">
+            <div className="auth-form">
+                <h1 className="auth-title">Entrar no FECAPI</h1>
+                
+                {error && <p className="error-message">{error}</p>}
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Usuário"
-                    value={usuario}
-                    onChange={(e) => setUsuario(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Senha"
-                    value={senha}
-                    onChange={(e) => setSenha(e.target.value)}
-                    required
-                />
-                <button type="submit">Entrar</button>
-            </form>
+                <form onSubmit={handleSubmit}>
+                    <div className="input-group">
+                        <span className="input-label">Usuário</span>
+                        <input
+                            type="text"
+                            value={usuario}
+                            onChange={(e) => setUsuario(e.target.value)}
+                            className="form-input"
+                            required
+                        />
+                    </div>
+                    
+                    <div className="input-group">
+                        <span className="input-label">Senha</span>
+                        <input
+                            type="password"
+                            value={senha}
+                            onChange={(e) => setSenha(e.target.value)}
+                            className="form-input"
+                            required
+                        />
+                    </div>
+                    
+                    <button type="submit" className="primary-button">Entrar</button>
+                </form>
 
-    
-            <button onClick={() => navigate('register')}>Criar conta</button>
+                <div className="auth-link">
+                    <span>Não tem conta? </span>
+                    <button 
+                        onClick={() => navigate('register')} 
+                        className="secondary-button"
+                    >
+                        Crie uma
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }

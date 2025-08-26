@@ -1,0 +1,134 @@
+/* ESTILOS GERAIS PARA A PÁGINA */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #2B3236 !important;
+  min-height: 100vh;
+  color: white;
+}
+
+/* Container principal */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Card do formulário */
+.auth-form {
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem;
+}
+
+/* Título */
+.auth-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* Mensagem de erro */
+.error-message {
+  color: #e53e3e;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  background-color: #fed7d7;
+  border-radius: 6px;
+  border-left: 4px solid #e53e3e;
+}
+
+/* Container para input com título fixo */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #ffffff;
+  font-weight: 500;
+  padding-left: 5px;
+}
+
+/* Campos de entrada */
+.form-input {
+  background-color: #626E74;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.form-input:focus {
+  border-color: #000000;
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 1);
+}
+
+.form-input::placeholder {
+  color: #d1d1d1;
+  opacity: 0.8;
+}
+
+/* Botão principal */
+.primary-button {
+  width: 100%;
+  padding: 14px;
+  background: #000000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.primary-button:hover {
+  background: #333333;
+}
+
+/* Link/button secundário */
+.auth-link {
+  text-align: center;
+  margin-top: 2rem;
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.secondary-button {
+  background: none;
+  border: none;
+  color: #FFED66;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.secondary-button:hover {
+  color: #ffe033;
+}
+
+/* Estilos responsivos */
+@media (max-width: 480px) {
+  .auth-form {
+    padding: 1.8rem;
+    margin: 0 15px;
+  }
+  
+  .auth-title {
+    font-size: 1.7rem;
+  }
+}

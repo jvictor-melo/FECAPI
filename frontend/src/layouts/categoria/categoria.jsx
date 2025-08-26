@@ -35,8 +35,9 @@ export default function Categoria() {
 
 
     return (
-        <div>
-            <button onClick={() => setIsModalOpen(true)}>
+        <div className="competidores-container">
+          <h1>Gerenciamento de Categorias</h1>
+            <button className="create-button" onClick={() => setIsModalOpen(true)}>
                 Criar Categorias
             </button>
 

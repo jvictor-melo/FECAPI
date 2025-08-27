@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 //import api from "../../App"
 import Janela from '../../components/janela/Janela';
@@ -35,9 +36,9 @@ export default function Categoria() {
 
 
     return (
-        <div>
-            <h1>Gerenciador de Categorias</h1>
-            <button onClick={() => setIsModalOpen(true)}>
+        <div className="competidores-container">
+          <h1>Gerenciamento de Categorias</h1>
+            <button className="create-button" onClick={() => setIsModalOpen(true)}>
                 Criar Categorias
             </button>
 

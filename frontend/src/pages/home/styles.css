@@ -34,11 +34,10 @@ body {
     width: 100vw;
     height: 100dvh;
     display: flex;
-    border: solid blue 2px;
 }
 
 #container-dinamico {
     width: 100%;
-    background-color: red;
+    background-color: rgb(255, 255, 255);
     height: 100%;
 }

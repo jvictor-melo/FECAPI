@@ -33,6 +33,12 @@ const db = new sqlite3.Database(dbPath, (err) => {
 
 // Criar tabelas apenas se não existirem
 db.serialize(() => {
+	// Usuarios
+  db.run(`CREATE TABLE IF NOT EXISTS usuarios (
+    id_usuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+    usuario VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL
+  )`);
   // Campeonato
   db.run(`
     CREATE TABLE IF NOT EXISTS campeonato (

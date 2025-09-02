@@ -1,0 +1,145 @@
+.campeonatos-container {
+  padding: 20px;
+  background-color: #2B3236;
+  min-height: 100vh;
+  color: white;
+}
+
+.campeonatos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #626E74;
+}
+
+.campeonatos-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.campeonatos-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #3A4247;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.campeonatos-table thead {
+  background-color: #626E74;
+}
+
+.campeonatos-table th {
+  background-color: black;
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: white;
+  border-bottom: 2px solid #2B3236;
+}
+
+.campeonatos-table td {
+  padding: 16px;
+  border-bottom: 1px solid #4A5459;
+  color: #E2E8F0;
+}
+
+.campeonato-row {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.campeonato-row:hover {
+  background-color: #4A5459;
+}
+
+/* Action Buttons */
+.campeonatos-actions-container {
+  display: flex;
+  gap: 10px;
+}
+
+.campeonato-edit-button {
+  padding: 8px 16px;
+  background-color: #FFED66;
+  color: #2B3236;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.campeonato-edit-button:hover {
+  background-color: #FFE033;
+  transform: translateY(-1px);
+}
+
+.campeonato-delete-button {
+  padding: 8px 16px;
+  background-color: #E53E3E;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.campeonato-delete-button:hover {
+  background-color: #C53030;
+  transform: translateY(-1px);
+}
+
+/* Empty State */
+.campeonatos-empty {
+  text-align: center;
+  padding: 40px;
+  color: #A0AEC0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .campeonatos-container {
+    padding: 10px;
+  }
+  
+  .campeonatos-table {
+    font-size: 14px;
+  }
+  
+  .campeonatos-table th,
+  .campeonatos-table td {
+    padding: 12px 8px;
+  }
+  
+  .campeonatos-actions-container {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .campeonato-edit-button,
+  .campeonato-delete-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .campeonatos-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .campeonatos-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

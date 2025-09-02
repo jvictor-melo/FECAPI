@@ -1,0 +1,55 @@
+.campeonatos-layout-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #2B3236;
+  min-height: 100vh;
+  color: white;
+}
+
+.create-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.create-button:hover {
+  background-color: #45a049;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #A0AEC0;
+  font-size: 18px;
+}
+
+.error {
+  color: #E53E3E;
+  padding: 20px;
+  background-color: #FED7D7;
+  border-radius: 4px;
+  margin: 20px;
+}
+
+.detalhes-campeonato {
+  padding: 20px;
+}
+
+.detalhes-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  color: #333;
+}
+
+.detalhes-item strong {
+  color: #2B3236;
+}

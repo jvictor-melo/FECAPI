@@ -15,7 +15,7 @@ export async function getCampeonatos(req, res) {
   const rows = await db.all(`
     SELECT c.*, cat.nome as categoria_nome 
     FROM campeonato c 
-    LEFT JOIN categoria cat ON c.categoria_id = cat.id
+    LEFT JOIN categoria cat ON c.categoria_id = cat.id_.id
   `);
   res.json(rows);
 }

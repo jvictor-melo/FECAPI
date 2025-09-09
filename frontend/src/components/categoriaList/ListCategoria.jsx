@@ -19,7 +19,7 @@ export default function CategoriaList({ categorias, onDelete, onEdit }) {
         <tbody>
           {categorias.length > 0 ? (
             categorias.map((cat) => (
-              <tr key={cat.id_categoria}>
+              <tr key={cat.id}>
                 <td>{cat.nome}</td>
                 <td>{cat.condicoes}</td>
                 <td>
@@ -33,7 +33,7 @@ export default function CategoriaList({ categorias, onDelete, onEdit }) {
                     <button
                       onClick={() => {
                         if (window.confirm('Tem certeza que deseja excluir esta categoria?')) {
-                          onDelete(cat.id_categoria);
+                          onDelete(cat.id);
                         }
                       }}
                       className="categoria-delete-button"

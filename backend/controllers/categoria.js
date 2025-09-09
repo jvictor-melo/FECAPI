@@ -13,7 +13,7 @@ export const getAll = (req, res) => {
 export const getById = (req, res) => {
   const { id } = req.params;
   
-  db.get('SELECT * FROM categoria WHERE id_categoria = ?', [id], (err, row) => {
+  db.get('SELECT * FROM categoria WHERE id = ?', [id], (err, row) => {
     if (err) {
       console.error("erro ao buscar categoria:", err);
       return res.status(500).json({ error: 'erro do servidor' });
@@ -36,7 +36,7 @@ export const create = (req, res) => {
 export const update = (req, res) => {
   const { id } = req.params;
   const { nome, condicoes } = req.body;
-  db.run(`UPDATE categoria SET nome = ?, condicoes = ? WHERE id_categoria = ?`, [nome, condicoes, id], function (err) {
+  db.run(`UPDATE categoria SET nome = ?, condicoes = ? WHERE id = ?`, [nome, condicoes, id], function (err) {
     if (err) return res.status(500).json(err);
     res.json({ changes: this.changes });
   });
@@ -44,7 +44,7 @@ export const update = (req, res) => {
 
 export const remove = (req, res) => {
   const { id } = req.params;
-  db.run(`DELETE FROM categoria WHERE id_categoria = ?`, [id], function (err) {
+  db.run(`DELETE FROM categoria WHERE id = ?`, [id], function (err) {
     if (err) return res.status(500).json(err);
     res.json({ changes: this.changes });
   });

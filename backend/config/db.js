@@ -44,7 +44,9 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS campeonato (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       nome TEXT NOT NULL,
-      data DATE
+      data DATE,
+      categoria_id INTEGER,
+      FOREIGN KEY (categoria_id) REFERENCES categoria(id)
     )
   `);
 
@@ -52,22 +54,22 @@ db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS categoria (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      campeonato_id INTEGER NOT NULL,
       nome TEXT NOT NULL,
-      descricao TEXT,
-      FOREIGN KEY (campeonato_id) REFERENCES campeonato(id)
-    )
-  `);
+      condicoes TEXT
+      )
+      `);
+  // campeonato_id INTEGER NOT NULL,
+  //FOREIGN KEY (campeonato_id) REFERENCES campeonato(id)
 
   // Competidor
   db.run(`
-    CREATE TABLE IF NOT EXISTS competidor (
+    CREATE TABLE IF NOT EXISTS competidores (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      categoria_id INTEGER NOT NULL,
+      id_categoria INTEGER NOT NULL,
       nome TEXT NOT NULL,
       apelido TEXT,
       equipe TEXT,
-      FOREIGN KEY (categoria_id) REFERENCES categoria(id)
+      FOREIGN KEY (id_categoria) REFERENCES categoria(id)
     )
   `);
 

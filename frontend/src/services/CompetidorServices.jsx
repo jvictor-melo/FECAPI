@@ -95,7 +95,20 @@ export async function deleteCompetidor(id) {
 // validar a categoria pae chama
 export async function validarCategoria(id_categoria) {
     try {
-        const response = await fetch(`${API_URL}/${id_categoria}`);
+        if (!id_categoria || isNaN(Number(id_categoria))) {
+            console.error('ID de categoria inválido:', id_categoria);
+            return false;
+        }
+
+        const response = await fetch(`http://localhost:3030/categoria/${id_categoria}`);
+         if (response.status === 404) {
+            return false;
+        }
+        
+        if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+        }
+        
         if (!response.ok) return false;
         const categoria = await response.json();
         return categoria !== null;

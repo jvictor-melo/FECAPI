@@ -38,9 +38,15 @@ export default function Competidores() {
 
   const handleCreate = async (novoCompetidor) => {
     try {
+      // aqui era so pra me dar um debug no console
+      //console.log('Dados recebidos para criar competidor:', novoCompetidor);
+      //console.log('ID da categoria:', novoCompetidor.id_categoria);
+      
       const categoriaValidada = await validarCategoria(novoCompetidor.id_categoria);
+      //console.log('Categoria validada:', categoriaValidada);
+      
       if (!categoriaValidada) {
-        setError("categoria invalida ou não encontrada");
+        setError("Categoria inválida ou não encontrada");
         return;
       }
 
@@ -48,11 +54,10 @@ export default function Competidores() {
       setIsModalOpen(false);
       await loadData();
     } catch (err) {
-      setError("Falha ao criar competidor" + err.message);
+      setError("Falha ao criar competidor: " + err.message);
       console.error("Erro:", err);
     }
   };
-
   // update pra nois
   const handleUpdate = async (competidorAtualizado) => {
     try{

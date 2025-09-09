@@ -30,8 +30,16 @@ export default function CompetidorForm({ onSubmit, categorias, competidorEditand
     }
 
     setError("");
-    onSubmit({ nome, id_categoria: Number(id_categoria) });
-    setNome("");
+
+    const idCategoriaNumber = Number(id_categoria);
+    console.log('ID da categoria convertido:', idCategoriaNumber);
+    
+    onSubmit({ nome, id_categoria: idCategoriaNumber });
+    
+    if (!competidorEditando) {
+      setNome("");
+      setIdCategoria("");
+    }
   };
 
   return (
@@ -54,8 +62,8 @@ export default function CompetidorForm({ onSubmit, categorias, competidorEditand
           required
         >
           <option value="">Selecione uma categoria</option>
-          {categorias.map(categoria => (
-            <option key={categoria.id_categoria} value={categoria.id_categoria}>
+          {categorias && categorias.map(categoria => (
+            <option key={categoria.id} value={categoria.id}>
               {categoria.nome}
             </option>
           ))}
